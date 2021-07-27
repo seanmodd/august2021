@@ -1,3 +1,3 @@
 # github-wcjrvo
 
-[Edit on StackBlitz ⚡️](https://stackblitz.com/edit/nextjs-chakraui)
+[Edit on StackBlitz ⚡️](https://stackblitz.com/edit/nextjs-chakraui)# aug21
