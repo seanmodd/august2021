@@ -1,54 +1,18 @@
-import Document, { Head, Main, NextScript } from 'next/document';
-import React from 'react';
-import { ServerStyleSheet } from 'styled-components';
+import NextDocument, { Html, Head, Main, NextScript } from 'next/document'
+import { ColorModeScript } from '@chakra-ui/react'
 
-export default class MyDocument extends Document {
-  static async getInitialProps(ctx) {
-    const sheet = new ServerStyleSheet()
-    const originalRenderPage = ctx.renderPage
-
-    try {
-      ctx.renderPage = () =>
-        originalRenderPage({
-          enhanceApp: (App) => (props) =>
-            sheet.collectStyles(<App {...props} />),
-        })
-
-      const initialProps = await Document.getInitialProps(ctx)
-
-      return {
-        ...initialProps,
-        styles: (
-          <>
-            {/* <Head>
-
-              <link
-                rel="preconnect"
-                href="https://fonts.gstatic.com/"
-                crossOrigin=""
-              />
-              rigin=""
-
-              <link
-                rel="preload"
-                href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap"
-                as="style"
-              />
-              <link
-                href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap"
-                rel="stylesheet"
-                media="print"
-                onLoad="this.media='all'"
-              />
-
-            </Head> */}
-            {initialProps.styles}
-            {sheet.getStyleElement()}
-          </>
-        ),
-      }
-    } finally {
-      sheet.seal()
-    }
+export default class Document extends NextDocument {
+  render() {
+    return (
+      <Html>
+        <Head />
+        <body>
+          {/* Make Color mode to persists when you refresh the page. */}
+          <ColorModeScript />
+          <Main />
+          <NextScript />
+        </body>
+      </Html>
+    )
   }
 }
